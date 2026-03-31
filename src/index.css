@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Seb Green Hub - Cinematic Dark Mode Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 45 20% 95%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 45 20% 95%;
+
+    /* Gold as primary */
+    --primary: 43 96% 56%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 38 80% 40%;
+    --secondary-foreground: 45 20% 95%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 58%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 43 96% 56%;
+
+    --radius: 9999px;
+
+    /* Cinematic Accent Colors */
+    --gold: 43 96% 56%;
+    --gold-deep: 38 90% 40%;
+    --amber: 38 100% 50%;
+    --platinum: 0 0% 85%;
+
+    /* Legacy neon kept for any leftover uses */
+    --neon-pink: 43 96% 56%;
+    --neon-green: 38 90% 48%;
+    
+    /* Glass Effect */
+    --glass-bg: 0 0% 8%;
+    --glass-border: 43 30% 25%;
+    
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 43 96% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply bg-glass/80 backdrop-blur-xl border border-glass-border/50;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-gold {
+    background: rgba(10, 8, 4, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--gold) / 0.3);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 215, 0, 0.08);
+  }
+
+  .gold-glow {
+    text-shadow: 
+      0 0 15px hsl(var(--gold) / 0.8),
+      0 0 30px hsl(var(--gold) / 0.4),
+      0 0 60px hsl(var(--gold) / 0.2);
+  }
+
+  .gold-border-glow {
+    box-shadow: 
+      0 0 8px hsl(var(--gold) / 0.6),
+      0 0 20px hsl(var(--gold) / 0.3),
+      inset 0 0 20px hsl(var(--gold) / 0.05);
+  }
+
+  /* Legacy aliases so existing code doesn't break */
+  .neon-glow-pink {
+    text-shadow: 
+      0 0 15px hsl(var(--gold) / 0.8),
+      0 0 30px hsl(var(--gold) / 0.4);
+  }
+
+  .neon-glow-green {
+    text-shadow: 
+      0 0 10px hsl(var(--gold-deep)),
+      0 0 20px hsl(var(--gold-deep) / 0.5);
+  }
+
+  .neon-border-pink {
+    box-shadow: 
+      0 0 5px hsl(var(--gold)),
+      0 0 15px hsl(var(--gold) / 0.4),
+      inset 0 0 20px hsl(var(--gold) / 0.08);
+  }
+
+  .neon-border-green {
+    box-shadow: 
+      0 0 5px hsl(var(--gold-deep)),
+      0 0 15px hsl(var(--gold-deep) / 0.4),
+      inset 0 0 20px hsl(var(--gold-deep) / 0.08);
+  }
+
+  .gradient-neon {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-deep)));
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)), hsl(var(--gold-deep)));
+  }
+
+  .gradient-neon-text {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-gold-text {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)), hsl(var(--platinum)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
