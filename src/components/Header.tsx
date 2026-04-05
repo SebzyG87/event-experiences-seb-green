@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X, ArrowLeft } from "lucide-react";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    if (isMenuOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 p-4">
+      <div ref={menuRef}>
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         {/* All Services Glass Pill */}
         <a
@@ -82,6 +94,7 @@ export const Header = () => {
           </nav>
         </div>
       )}
+      </div>
     </header>
   );
 };
